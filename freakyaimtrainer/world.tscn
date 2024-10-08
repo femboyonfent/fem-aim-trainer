@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct7mrj25qux2d"]
+[gd_scene load_steps=8 format=3 uid="uid://ct7mrj25qux2d"]
 
 [ext_resource type="PackedScene" uid="uid://cjtvcn3m4aadk" path="res://player.tscn" id="1_ph4rd"]
+[ext_resource type="PackedScene" uid="uid://c4gjtofdjrash" path="res://ball_target.tscn" id="2_e2nit"]
+[ext_resource type="PackedScene" uid="uid://bxnqsqttg175x" path="res://human_target.tscn" id="3_3ylpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuv3y"]
+albedo_color = Color(0.0861651, 0.330308, 0.18162, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6vrrf"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,10 +18,11 @@ sky_material = SubResource("ProceduralSkyMaterial_6vrrf")
 background_mode = 2
 sky = SubResource("Sky_iut8c")
 
-[node name="CSGBox3D" type="CSGBox3D"]
+[node name="CSGBox3D" type="CSGBox3D" groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4094, 0.206046, -7.10469)
 use_collision = true
 size = Vector3(25.6189, 1, 15.2651)
+material = SubResource("StandardMaterial3D_kuv3y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -27,3 +33,9 @@ environment = SubResource("Environment_qwby4")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ph4rd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40042, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("2_e2nit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219767, 2.87955, -8.82481)
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("3_3ylpx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51121, 2.58103, -3.86994)

@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxnqsqttg175x"]
+[gd_scene load_steps=9 format=3 uid="uid://bxnqsqttg175x"]
+
+[ext_resource type="Script" path="res://human_target.gd" id="1_p3cys"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iw32h"]
 albedo_color = Color(1, 0, 0, 1)
@@ -14,22 +16,39 @@ material = SubResource("StandardMaterial3D_mb2ey")
 [sub_resource type="SphereShape3D" id="SphereShape3D_5ynw6"]
 radius = 0.252507
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qngyp"]
+height = 1.90451
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0chkh"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_p3cys")
 
 [node name="head" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25, 0)
 mesh = SubResource("SphereMesh_o4873")
 
 [node name="body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.04498, 0)
 mesh = SubResource("CapsuleMesh_wcu2b")
 
-[node name="headshot" type="CollisionShape3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="headshot" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_5ynw6")
 
-[node name="bodyhitbox" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("CapsuleShape3D_qngyp")
+
+[node name="Area3D2" type="Area3D" parent="."]
+
+[node name="bodyhitbox" type="CollisionShape3D" parent="Area3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.045, 0)
 shape = SubResource("CapsuleShape3D_0chkh")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
+[connection signal="area_shape_entered" from="Area3D2" to="." method="_on_area_3d_area_shape_entered"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_body_entered"]

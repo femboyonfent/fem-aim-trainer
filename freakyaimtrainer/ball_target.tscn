@@ -1,19 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4gjtofdjrash"]
+[gd_scene load_steps=5 format=3 uid="uid://c4gjtofdjrash"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj2gi"]
-albedo_color = Color(1, 0, 0, 1)
+[ext_resource type="Script" path="res://ball_target.gd" id="1_pco5r"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_oetyl"]
-material = SubResource("StandardMaterial3D_uj2gi")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vhr5"]
+albedo_color = Color(0.966069, 0.0793286, 0.0503516, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_m5xa6"]
+[sub_resource type="SphereMesh" id="SphereMesh_dfqmg"]
+material = SubResource("StandardMaterial3D_6vhr5")
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_4de13"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_oetyl")
+[node name="CharacterBody3D" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_pco5r")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_dfqmg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_m5xa6")
+[node name="Area3D2" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("SphereShape3D_4de13")
+
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]

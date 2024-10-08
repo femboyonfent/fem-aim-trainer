@@ -1,9 +1,16 @@
 extends CharacterBody3D
 @onready var head = $head
-
+var bullet = preload("res://bullet.tscn")
 const mouse_speed = 0.4
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
+
+var instance
+@onready var gun_barrel = $head/Camera3D/usps/RayCast3D
+
+
+
 
 
 func _ready():
@@ -35,4 +42,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+
+	if Input.is_action_just_pressed("attack"):
+		instance = bullet.instantiate()
+		instance.position = position + Vector3(0,1,0)
+		instance.transform.basis = gun_barrel.global_transform.basis
+		get_parent().add_child(instance)
 	move_and_slide()
