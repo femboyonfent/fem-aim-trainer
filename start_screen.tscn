@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmlt2eomfcufa"]
+
+[ext_resource type="Shader" path="res://start_screen.gdshader" id="1_dbxmh"]
+[ext_resource type="Script" path="res://control.gd" id="1_mqivn"]
+[ext_resource type="Texture2D" uid="uid://ditecw0p81n4x" path="res://5212968.jpg" id="3_ldyve"]
+[ext_resource type="FontFile" uid="uid://2eihi8vbo5lk" path="res://JetBrainsMono-Medium.ttf" id="3_vstce"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g67uj"]
+shader = ExtResource("1_dbxmh")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7l2bd"]
+shader = ExtResource("1_dbxmh")
+shader_parameter/resolution = Vector2(240, 120)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.11
+shader_parameter/interference_amount = 0.346
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.399
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="Control" type="Control"]
+material = SubResource("ShaderMaterial_g67uj")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqivn")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 99.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.54994, 0.985978, 1)
+theme_override_fonts/font = ExtResource("3_vstce")
+text = "switching "
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_7l2bd")
+position = Vector2(480, 359.966)
+scale = Vector2(0.318802, 0.357637)
+texture = ExtResource("3_ldyve")
+region_enabled = true
+region_rect = Rect2(-3.90625, -26.4688, 3005.41, 2019.94)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(5.40186, 13.3167)
+scale = Vector2(0.997551, 1.01027)
+texture = ExtResource("3_ldyve")
+region_rect = Rect2(-32.25, 250.75, 0, 0)
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -53.0
+offset_right = 97.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.54994, 0.985978, 1)
+theme_override_fonts/font = ExtResource("3_vstce")
+text = "strafe "
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

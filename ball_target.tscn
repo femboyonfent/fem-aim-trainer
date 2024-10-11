@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4gjtofdjrash"]
+
+[ext_resource type="Script" path="res://ball_target.gd" id="1_177r1"]
+[ext_resource type="Material" uid="uid://dm512cyarrkgo" path="res://human_target.tres" id="2_xo3i4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dfqmg"]
+material = ExtResource("2_xo3i4")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t8t31"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["target"]]
+motion_mode = 1
+script = ExtResource("1_177r1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." groups=["target"]]
+mesh = SubResource("SphereMesh_dfqmg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["target"]]
+shape = SubResource("SphereShape3D_t8t31")

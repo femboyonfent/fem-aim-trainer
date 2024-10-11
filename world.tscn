@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct7mrj25qux2d"]
+
+[ext_resource type="Script" path="res://addons/vaporwavesky/vaporwave_sky_material.gd" id="1_om4f2"]
+[ext_resource type="PackedScene" uid="uid://cjtvcn3m4aadk" path="res://player.tscn" id="1_ph4rd"]
+[ext_resource type="PackedScene" uid="uid://c4gjtofdjrash" path="res://ball_target.tscn" id="2_e2nit"]
+[ext_resource type="Shader" path="res://addons/vaporwavesky/vaporwave.gdshader" id="2_luuvi"]
+[ext_resource type="PackedScene" uid="uid://bxnqsqttg175x" path="res://human_target.tscn" id="3_3ylpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuv3y"]
+albedo_color = Color(0.0543583, 0.242189, 0.127672, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ritqg"]
+shader = ExtResource("2_luuvi")
+shader_parameter/sky_color = Color(0.1, 0.07, 0.2, 1)
+shader_parameter/sky_horizon_color = Color(0.56, 0.18, 0.42, 1)
+shader_parameter/sky_horizon_decay = 6.7
+shader_parameter/ground_color = Color(0, 0, 0, 1)
+shader_parameter/ground_horizon_color = Color(1, 0.405173, 0.826816, 1)
+shader_parameter/ground_horizon_decay = 4.4
+shader_parameter/stars_enabled = true
+shader_parameter/stars_below_horizon = false
+shader_parameter/star_color = Color(0.95, 0.9, 0.6, 1)
+shader_parameter/star_radius = 0.3
+shader_parameter/star_density = 5.0
+shader_parameter/star_randomness = 1.0
+shader_parameter/star_seed = Vector2(0, 0)
+shader_parameter/grid_enabled = true
+shader_parameter/grid_color = Color(0.243137, 0.25098, 0.741176, 1)
+shader_parameter/grid_depth = 2.0
+shader_parameter/grid_spacing = 1.2
+shader_parameter/grid_thickness = 0.08
+shader_parameter/grid_max_distance = 25.0
+shader_parameter/grid_max_distance_fade = 0.3
+shader_parameter/grid_energy = 1.2
+shader_parameter/sun_radius = 15.0
+shader_parameter/sun_smoothing = 0.35
+shader_parameter/sun_glow_color = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_glow_radius = 30.0
+shader_parameter/sun_glow_intensity = 0.5
+shader_parameter/sun_gradient_enabled = true
+shader_parameter/sun_color_1 = Color(0.96, 0.9, 0.35, 1)
+shader_parameter/sun_color_2 = Color(0.96, 0.35, 0.9, 1)
+shader_parameter/sun_gradient_pos_frac = 0.6
+shader_parameter/sun_gradient_span_frac = 0.8
+shader_parameter/sun_banding_enabled = true
+shader_parameter/sun_banding_base_gap = 0.015
+shader_parameter/sun_banding_gap_mul = 1.1
+shader_parameter/sun_banding_stop_height = 0.7
+shader_parameter/sun_banding_thickness = 0.01
+script = ExtResource("1_om4f2")
+
+[sub_resource type="Sky" id="Sky_hyte1"]
+sky_material = SubResource("ShaderMaterial_ritqg")
+
+[sub_resource type="Environment" id="Environment_0mx0n"]
+background_mode = 2
+sky = SubResource("Sky_hyte1")
+ambient_light_energy = 2.01
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" groups=["terrain"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4094, 0.206046, -7.10469)
+use_collision = true
+size = Vector3(25, 1, 15)
+material = SubResource("StandardMaterial3D_kuv3y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0mx0n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999847, -0.0100601, 0.0142612, 0, 0.817145, 0.576433, -0.0174524, -0.576344, 0.817021, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_ph4rd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51083, 0)
+
+[node name="balla" parent="." instance=ExtResource("2_e2nit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219767, 2.87955, -8.82481)
+
+[node name="freaky target" parent="." instance=ExtResource("3_3ylpx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51121, 2.58103, -3.86994)
