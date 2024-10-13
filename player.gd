@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 func _shoot_USPS():
 	if not $head/Camera3D/usps/AnimationPlayer.is_playing():
 		$head/Camera3D/usps/AnimationPlayer.play("shoot")
+		$head/Camera3D/usps/AudioStreamPlayer3D.play()
 		if aim_ray.is_colliding():
 			if aim_ray.get_collider().is_in_group("target"):
 				aim_ray.get_collider().hit()

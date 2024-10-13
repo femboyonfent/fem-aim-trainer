@@ -54,6 +54,7 @@ label_settings = SubResource("LabelSettings_hf4mq")
 horizontal_alignment = 1
 
 [node name="usps" parent="head/Camera3D" instance=ExtResource("4_5cl25")]
+transform = Transform3D(-3.61999e-07, 0, -0.1, 0, 0.1, 0, 0.1, 0, -3.61999e-07, 0.43, -0.271, -0.5)
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143012)
