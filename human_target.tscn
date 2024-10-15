@@ -42,4 +42,6 @@ shape = SubResource("SphereShape3D_lupwy")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" groups=["head"]]
 mesh = SubResource("SphereMesh_flfvs")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="tree_exited" from="CharacterBody3D" to="." method="_on_character_body_3d_tree_exited"]
