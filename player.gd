@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var label = $head/Camera3D/Label
 @onready var score = 0 
 var bullet = preload("res://bullet.tscn")
-const mouse_speed = 0.4
+const mouse_speed = 0.1
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 

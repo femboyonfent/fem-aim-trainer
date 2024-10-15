@@ -71,18 +71,18 @@ text = "switching "
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_7l2bd")
-position = Vector2(480, 359.966)
-scale = Vector2(0.318802, 0.357637)
+position = Vector2(799, 600.466)
+scale = Vector2(0.531115, 0.595873)
 texture = ExtResource("3_ldyve")
 region_enabled = true
 region_rect = Rect2(-3.90625, -26.4688, 3005.41, 2019.94)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
 z_index = -1
-position = Vector2(5.40186, 13.3167)
-scale = Vector2(0.997551, 1.01027)
+position = Vector2(2.6508, -2.11582)
 texture = ExtResource("3_ldyve")
-region_rect = Rect2(-32.25, 250.75, 0, 0)
+region_enabled = true
+region_rect = Rect2(-0.267334, 3.58499, 3000.03, 2005.08)
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 1
