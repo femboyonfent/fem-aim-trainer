@@ -1,5 +1,5 @@
 extends Node3D
-@export var mob_scene = preload("res://human_target.tscn")
+@export var mob_scene: PackedScene
 
 
 
@@ -19,21 +19,27 @@ var point = spawnpoint.pick_random()
 
 
 func spawning():
+	point = spawnpoint.pick_random()
 	var spawn = mob_scene.instantiate()
 	if point == 1:
-		spawn.instant(left_close.position)
+		spawn.position = left_close.position
+		print("left_close")
 	elif point == 2:
-		spawn.initialize(right_close.position)
+		spawn.position = right_close.position
+		print("right_close")
 	elif point == 3:
-		spawn.initialize(left_med.position)
+		spawn.position = left_med.position
+		print("left_med")
 	elif point == 4:
-		spawn.initialize(right_med.position)
+		spawn.position = right_med.position
+		print("right_med")
 	elif point == 5:
-		spawn.initialize(left_far.position)
+		spawn.position = left_far.position
+		print("left_far")
 	elif point == 6: 
-		spawn.initialize(right_far.position)
-		
-
+		spawn.position = right_far.position
+		print("right_far")
+	get_parent().add_child(spawn)
 # note:
 # this manages the spawning of the bots. 
 
@@ -45,4 +51,4 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	pass
+	spawning()
