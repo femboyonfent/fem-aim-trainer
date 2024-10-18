@@ -1,11 +1,11 @@
 extends CharacterBody3D
 @onready var head = $head
 @onready var aim_ray = $head/Camera3D/RayCast3D
-@onready var label = $head/Camera3D/Label
+@onready var score_ = $head/Camera3D/score
+@onready var timer = $head/Camera3D/timer
 @onready var score = 0 
 const mouse_speed = 0.1
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 
 
 
@@ -49,9 +49,9 @@ func _shoot_USPS():
 			if aim_ray.get_collider().is_in_group("target"):
 				aim_ray.get_collider().hit()
 				score += 10
-				label.text = str(score)
+				score_.text = str(score)
 				print("bazinga!!!")
 			elif  aim_ray.get_collider().is_in_group("head"):
 				aim_ray.get_collider().headshot()
 				score += 30
-				label.text = str(score)
+				score_.text = str(score)

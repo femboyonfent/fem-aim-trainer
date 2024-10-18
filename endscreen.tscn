@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6lbmoedwmqld"]
+
+[ext_resource type="Texture2D" uid="uid://ditecw0p81n4x" path="res://5212968.jpg" id="1_jfyys"]
+[ext_resource type="Script" path="res://endscreen.gd" id="1_uf0e4"]
+[ext_resource type="Shader" path="res://start_screen.gdshader" id="2_bw3da"]
+[ext_resource type="FontFile" uid="uid://2eihi8vbo5lk" path="res://JetBrainsMono-Medium.ttf" id="4_ifcex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2n5d"]
+shader = ExtResource("2_bw3da")
+shader_parameter/resolution = Vector2(240, 120)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.0
+shader_parameter/noise_amount = 0.11
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uf0e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(805, 594.5)
+scale = Vector2(0.547333, 0.6095)
+texture = ExtResource("1_jfyys")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+material = SubResource("ShaderMaterial_y2n5d")
+texture = ExtResource("1_jfyys")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.437
+anchor_right = 0.5
+anchor_bottom = 0.437
+offset_left = -26.0
+offset_top = -10.4
+offset_right = 14.0
+offset_bottom = 11.6
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.54902, 0.984314, 1)
+theme_override_fonts/font = ExtResource("4_ifcex")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -15.0
+offset_right = 105.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.54902, 0.984314, 1)
+theme_override_fonts/font = ExtResource("4_ifcex")
+text = "return to main menu. "
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

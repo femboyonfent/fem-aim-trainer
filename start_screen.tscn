@@ -52,6 +52,7 @@ grow_vertical = 2
 script = ExtResource("1_mqivn")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,8 +72,8 @@ text = "switching "
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_7l2bd")
-position = Vector2(799, 600.466)
-scale = Vector2(0.531115, 0.595873)
+position = Vector2(802.5, 598.5)
+scale = Vector2(0.544093, 0.617632)
 texture = ExtResource("3_ldyve")
 region_enabled = true
 region_rect = Rect2(-3.90625, -26.4688, 3005.41, 2019.94)

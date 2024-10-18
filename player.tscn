@@ -38,7 +38,7 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_oyoav")
 
-[node name="Label" type="Label" parent="head/Camera3D"]
+[node name="score" type="Label" parent="head/Camera3D"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.526
@@ -57,5 +57,11 @@ horizontal_alignment = 1
 transform = Transform3D(-3.61999e-07, 0, -0.1, 0, 0.1, 0, 0.1, 0, -3.61999e-07, 0.43, -0.271, -0.5)
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.168783)
 target_position = Vector3(0, 0, -1000)
+
+[node name="timer" type="Label" parent="head/Camera3D"]
+offset_right = 40.0
+offset_bottom = 22.0
+
+[node name="Timer" type="Timer" parent="."]
