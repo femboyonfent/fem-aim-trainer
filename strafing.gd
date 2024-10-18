@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 	text.text = str(int(timer2.get_time_left()))
 	if timer2.is_stopped():
 		print($"human bean".score)
-		$Control/Label.text ="score: " + str( $"human bean".score)
+		$Control/Label.text ="score: " + str( $"human bean".score) + "accuracy: " + str($"human bean".accuracey * 100 ) + "%"
 		$Control.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

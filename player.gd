@@ -4,6 +4,8 @@ extends CharacterBody3D
 @onready var score_ = $head/Camera3D/score
 @onready var timer = $head/Camera3D/timer
 @onready var score = 0 
+@onready var accuracey =  0
+
 const mouse_speed = 0.1
 const SPEED = 5.0
 
@@ -42,16 +44,22 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _shoot_USPS():
+	var attempts: int
+	var hits: int 
 	if not $head/Camera3D/usps/AnimationPlayer.is_playing():
 		$head/Camera3D/usps/AnimationPlayer.play("shoot")
 		$head/Camera3D/usps/AudioStreamPlayer3D.play()
+		attempts += 1  
 		if aim_ray.is_colliding():
 			if aim_ray.get_collider().is_in_group("target"):
+				hits += 1 
 				aim_ray.get_collider().hit()
 				score += 10
 				score_.text = str(score)
 				print("bazinga!!!")
 			elif  aim_ray.get_collider().is_in_group("head"):
+				hits += 1 
 				aim_ray.get_collider().headshot()
 				score += 30
 				score_.text = str(score)
+	accuracey = hits / attempts
