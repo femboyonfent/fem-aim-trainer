@@ -3,9 +3,10 @@ extends CharacterBody3D
 @onready var aim_ray = $head/Camera3D/RayCast3D
 @onready var score_ = $head/Camera3D/score
 @onready var timer = $head/Camera3D/timer
-@onready var score = 0 
-@onready var accuracey =  0
-
+@onready var score = 1
+@onready var accuracey =  1
+var attempts: float
+var hits: float
 const mouse_speed = 0.1
 const SPEED = 5.0
 
@@ -23,9 +24,11 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_speed))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89),deg_to_rad( 89))
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if Input.is_action_just_pressed("attack"):
+		accuracey = hits / attempts
+		attempts = attempts + 1 
 		_shoot_USPS()
+		score_.text = str(score)
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -44,22 +47,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _shoot_USPS():
-	var attempts: int
-	var hits: int 
 	if not $head/Camera3D/usps/AnimationPlayer.is_playing():
 		$head/Camera3D/usps/AnimationPlayer.play("shoot")
-		$head/Camera3D/usps/AudioStreamPlayer3D.play()
-		attempts += 1  
+		$head/Camera3D/usps/AudioStreamPlayer3D.play()  
 		if aim_ray.is_colliding():
 			if aim_ray.get_collider().is_in_group("target"):
-				hits += 1 
+				hits = hits + 1
 				aim_ray.get_collider().hit()
 				score += 10
-				score_.text = str(score)
 				print("bazinga!!!")
 			elif  aim_ray.get_collider().is_in_group("head"):
-				hits += 1 
+				hits = hits + 1 
 				aim_ray.get_collider().headshot()
 				score += 30
-				score_.text = str(score)
-	accuracey = hits / attempts
