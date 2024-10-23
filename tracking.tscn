@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjk2vnakafb5o"]
+[gd_scene load_steps=9 format=3 uid="uid://bjk2vnakafb5o"]
 
+[ext_resource type="Script" path="res://tracking.gd" id="1_awm8w"]
 [ext_resource type="Script" path="res://addons/vaporwavesky/vaporwave_sky_material.gd" id="1_dfnxy"]
 [ext_resource type="Shader" path="res://addons/vaporwavesky/vaporwave.gdshader" id="2_y73c3"]
+[ext_resource type="PackedScene" uid="uid://cdppehkw07u4a" path="res://tracking thing.tscn" id="4_yxyka"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_grifm"]
 shader = ExtResource("2_y73c3")
@@ -57,6 +59,7 @@ glow_enabled = true
 albedo_color = Color(0.054902, 0.243137, 0.129412, 1)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_awm8w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -67,7 +70,10 @@ directional_shadow_max_distance = 50.0
 environment = SubResource("Environment_oh32v")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-radius = 12.0
+radius = 17.0
 height = 0.4
 sides = 20
 material = SubResource("StandardMaterial3D_ydn56")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_yxyka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58218, 0)
