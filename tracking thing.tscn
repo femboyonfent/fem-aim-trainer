@@ -1,18 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjtvcn3m4aadk"]
+[gd_scene load_steps=6 format=3 uid="uid://cdppehkw07u4a"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_a3k00"]
-[ext_resource type="Texture2D" uid="uid://r1liahqjpsdp" path="res://pixil-frame-0 (1).png" id="2_oyoav"]
-[ext_resource type="PackedScene" uid="uid://oq2sa03pfbo3" path="res://usps.tscn" id="4_5cl25"]
-[ext_resource type="FontFile" uid="uid://2eihi8vbo5lk" path="res://JetBrainsMono-Medium.ttf" id="4_e6416"]
+[ext_resource type="Script" path="res://player.gd" id="1_uwkn6"]
+[ext_resource type="Texture2D" uid="uid://r1liahqjpsdp" path="res://pixil-frame-0 (1).png" id="2_1sbe5"]
+[ext_resource type="FontFile" uid="uid://2eihi8vbo5lk" path="res://JetBrainsMono-Medium.ttf" id="3_omp0y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6ncj"]
 radius = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_hf4mq"]
-font = ExtResource("4_e6416")
+font = ExtResource("3_omp0y")
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["yourself"]]
-script = ExtResource("1_a3k00")
+script = ExtResource("1_uwkn6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_v6ncj")
@@ -37,7 +36,7 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_oyoav")
+texture = ExtResource("2_1sbe5")
 
 [node name="score" type="Label" parent="head/Camera3D"]
 anchors_preset = -1
@@ -53,9 +52,6 @@ grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_hf4mq")
 horizontal_alignment = 1
-
-[node name="usps" parent="head/Camera3D" instance=ExtResource("4_5cl25")]
-transform = Transform3D(-3.61999e-07, 0, -0.1, 0, 0.1, 0, 0.1, 0, -3.61999e-07, 0.43, -0.271, -0.5)
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.168783)

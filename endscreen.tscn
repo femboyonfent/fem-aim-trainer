@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6lbmoedwmqld"]
+[gd_scene load_steps=7 format=3 uid="uid://c6lbmoedwmqld"]
 
 [ext_resource type="Texture2D" uid="uid://ditecw0p81n4x" path="res://5212968.jpg" id="1_jfyys"]
 [ext_resource type="Script" path="res://endscreen.gd" id="1_uf0e4"]
@@ -21,6 +21,11 @@ shader_parameter/roll_line_amount = 0.3
 shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ox3it"]
+font = ExtResource("4_ifcex")
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -54,6 +59,7 @@ offset_bottom = 11.6
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.54902, 0.984314, 1)
 theme_override_fonts/font = ExtResource("4_ifcex")
+label_settings = SubResource("LabelSettings_ox3it")
 horizontal_alignment = 1
 vertical_alignment = 1
 

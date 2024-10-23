@@ -18,13 +18,13 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=1200
+window/size/viewport_height=768
 window/size/mode=4
 window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/vsync/vsync_mode=0
+window/size/viewport_width=1024
 
 [editor_plugins]
 
@@ -76,5 +76,13 @@ common/physics_interpolation=true
 
 [rendering]
 
-scaling_3d/scale=0.8
-anti_aliasing/quality/msaa_2d=1
+lights_and_shadows/directional_shadow/size=2000
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+environment/scale=0.8
+environment/positional_shadow/soft_shadow_filter_quality=2
+environment/directional_shadow/soft_shadow_filter_quality=2
+environment/directional_shadow/size=4096
+environment/quality/msaa_2d=1
+environment/size/viewport_width=1600
+environment/size/viewport_height=1200

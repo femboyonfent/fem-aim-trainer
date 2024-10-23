@@ -24,39 +24,20 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_speed))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89),deg_to_rad( 89))
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_pressed("attack"):
 		accuracey = hits / attempts
 		attempts = attempts + 1 
 		_shoot_USPS()
 		score_.text = str(score)
 
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "forward ", "backword")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
 	move_and_slide()
 
 func _shoot_USPS():
-	if not $head/Camera3D/usps/AnimationPlayer.is_playing():
-		$head/Camera3D/usps/AnimationPlayer.play("shoot")
-		$head/Camera3D/usps/AudioStreamPlayer3D.play()  
 		if aim_ray.is_colliding():
 			if aim_ray.get_collider().is_in_group("target"):
 				hits = hits + 1
-				aim_ray.get_collider().hit()
 				score += 10
 				print("bazinga!!!")
 			elif  aim_ray.get_collider().is_in_group("head"):
 				hits = hits + 1 
-				aim_ray.get_collider().headshot()
 				score += 30
