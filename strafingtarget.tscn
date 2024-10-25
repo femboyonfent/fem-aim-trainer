@@ -43,7 +43,7 @@ shape = SubResource("SphereShape3D_lupwy")
 mesh = SubResource("SphereMesh_flfvs")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [connection signal="tree_exited" from="CharacterBody3D" to="." method="_on_character_body_3d_tree_exited"]

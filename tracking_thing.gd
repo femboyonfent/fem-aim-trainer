@@ -35,12 +35,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _shoot_USPS():
-	if  not $head/Camera3D/usps/AnimationPlayer.is_playing():
-		$head/Camera3D/usps/AnimationPlayer.play("shoot")
-		if aim_ray.is_colliding():
-			if aim_ray.get_collider().is_in_group("target"):
-				hits = hits + 1
-				score += 10
-			elif  aim_ray.get_collider().is_in_group("head"):
+	if aim_ray.is_colliding():
+		if aim_ray.get_collider().is_in_group("target"):
+			hits = hits + 1
+			score += 10
+		elif  aim_ray.get_collider().is_in_group("head"):
 				hits = hits + 1 
 				score += 30

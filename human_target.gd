@@ -1,8 +1,16 @@
 extends CharacterBody3D
 var health = 4 
-var SPEED = 6
-var dir = 0 
+var SPEED = [6,7,5,8,9]
+@onready var speedpick = SPEED.pick_random()
 var direction: Vector2
+var spawnpoint = [1,2]
+@onready var point = spawnpoint.pick_random()
+var speed: int
+func _ready() -> void:
+	point = spawnpoint.pick_random()
+	pick_dir(point)
+	speedpick = SPEED.pick_random()
+	speed = speedpick
 func hit():
 	print(health)
 	health -= 1 
@@ -14,9 +22,6 @@ func pick_dir(number):
 	if number == 2: 
 		direction = Vector2.LEFT
 	
-func _on_character_body_3d_tree_exited() -> void:
-	queue_free()
-
 
 func _physics_process(delta: float) -> void:
 	
@@ -25,15 +30,18 @@ func _physics_process(delta: float) -> void:
 	var input_dir := direction
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+	look_at(Vector3(0,1,0))
 
 	move_and_slide()
 
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	point = spawnpoint.pick_random()
+	pick_dir(point)
+	speedpick = SPEED.pick_random()
+	speed = speedpick

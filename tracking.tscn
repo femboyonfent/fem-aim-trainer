@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjk2vnakafb5o"]
+[gd_scene load_steps=10 format=3 uid="uid://bjk2vnakafb5o"]
 
 [ext_resource type="Script" path="res://tracking.gd" id="1_awm8w"]
 [ext_resource type="Script" path="res://addons/vaporwavesky/vaporwave_sky_material.gd" id="1_dfnxy"]
 [ext_resource type="Shader" path="res://addons/vaporwavesky/vaporwave.gdshader" id="2_y73c3"]
 [ext_resource type="PackedScene" uid="uid://cdppehkw07u4a" path="res://tracking thing.tscn" id="4_yxyka"]
+[ext_resource type="PackedScene" uid="uid://bmg6d66aguam1" path="res://strafingtarget.tscn" id="5_y57fv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_grifm"]
 shader = ExtResource("2_y73c3")
@@ -70,6 +71,7 @@ directional_shadow_max_distance = 50.0
 environment = SubResource("Environment_oh32v")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+use_collision = true
 radius = 17.0
 height = 0.4
 sides = 20
@@ -77,3 +79,6 @@ material = SubResource("StandardMaterial3D_ydn56")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_yxyka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58218, 0)
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("5_y57fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30753, 3.33283, -6.50889)
