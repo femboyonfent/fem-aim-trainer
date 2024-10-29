@@ -40,7 +40,7 @@ func spawning():
 		spawn.pick_dir(1)
 	elif point == 6: 
 		spawn.position = right_far.position
-		print("right_far")
+		spawn.pick_dir(2)
 	get_parent().add_child(spawn)
 # note:
 # this manages the spawning of the bots. 

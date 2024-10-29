@@ -19,7 +19,7 @@ shader_parameter/ground_color = Color(0, 0, 0, 1)
 shader_parameter/ground_horizon_color = Color(1, 0.405173, 0.826816, 1)
 shader_parameter/ground_horizon_decay = 4.4
 shader_parameter/stars_enabled = true
-shader_parameter/stars_below_horizon = false
+shader_parameter/stars_below_horizon = true
 shader_parameter/star_color = Color(0.95, 0.9, 0.6, 1)
 shader_parameter/star_radius = 0.3
 shader_parameter/star_density = 5.0
@@ -56,9 +56,12 @@ sky_material = SubResource("ShaderMaterial_n3jog")
 [sub_resource type="Environment" id="Environment_xt3yn"]
 background_mode = 2
 sky = SubResource("Sky_hyte1")
-ambient_light_energy = 2.01
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 1.2
 
 [node name="spawning" type="Node3D"]
 script = ExtResource("1_jib2k")
@@ -72,6 +75,7 @@ material = SubResource("StandardMaterial3D_xcwm6")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.052, 6.02709)
+visible = false
 size = Vector3(25, 1, 2.17538)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
@@ -114,22 +118,22 @@ shadow_blur = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5267, 5.39712)
 
 [node name="left_close" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.794, 2, -3.707)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62052, 2, -3.707)
 
 [node name="right_close" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60899, 2, -3.15117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11389, 2, -3.15117)
 
 [node name="right_med" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.609, 2, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.65127, 2, -12)
 
 [node name="left_med" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.794, 2, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03199, 2, -12)
 
 [node name="right_far" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.609, 2, -16.8808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45499, 2, -16.8808)
 
 [node name="left_far" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.794, 2, -16.881)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7925, 2, -16.881)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

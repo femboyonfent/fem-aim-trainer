@@ -3,8 +3,12 @@ var health = 4
 var SPEED = [6,7,5,8,9]
 @onready var speedpick = SPEED.pick_random()
 var direction: Vector2
+var spawnpoint = [1,2]
+@onready var point = spawnpoint.pick_random()
 var speed: int
 func _ready() -> void:
+	point = spawnpoint.pick_random()
+	pick_dir(point)
 	speedpick = SPEED.pick_random()
 	speed = speedpick
 func hit():
@@ -31,8 +35,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-
+	
+	look_at(Vector3(0,1,0))
 	move_and_slide()
+
+
+func _on_timer_timeout() -> void:
+	point = spawnpoint.pick_random()
+	pick_dir(point)
+	speedpick = SPEED.pick_random()
+	speed = speedpick
 
 
 func _on_character_body_3d_tree_exited() -> void:

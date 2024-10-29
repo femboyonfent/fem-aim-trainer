@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bmg6d66aguam1"]
 
-[ext_resource type="Script" path="res://human_target.gd" id="1_dmtku"]
+[ext_resource type="Script" path="res://strafingtarget.gd" id="1_yn4dd"]
 [ext_resource type="Script" path="res://head.gd" id="2_udx4x"]
 [ext_resource type="Material" uid="uid://dm512cyarrkgo" path="res://human_target.tres" id="3_pecew"]
 
@@ -22,7 +22,7 @@ height = 0.6
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_dmtku")
+script = ExtResource("1_yn4dd")
 
 [node name="body" type="MeshInstance3D" parent="." groups=["target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.04498, 0)
