@@ -66,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.54994, 0.985978, 1)
 theme_override_fonts/font = ExtResource("3_vstce")
-text = "switching "
+text = "tracking"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -99,7 +99,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.54994, 0.985978, 1)
 theme_override_fonts/font = ExtResource("3_vstce")
-text = "strafe "
+text = "bot shot. "
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

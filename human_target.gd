@@ -45,3 +45,7 @@ func _on_timer_timeout() -> void:
 	pick_dir(point)
 	speedpick = SPEED.pick_random()
 	speed = speedpick
+
+
+func _on_character_body_3d_tree_exited() -> void:
+	queue_free()

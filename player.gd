@@ -17,6 +17,7 @@ const SPEED = 5.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Input.set_use_accumulated_input(false)
+# make so aiming is epic and awesomesauce and i dont get -reped,,,
 func _input(event):
 	if event is InputEventMouseMotion:
 		
@@ -51,9 +52,9 @@ func _shoot_USPS():
 		if aim_ray.is_colliding():
 			if aim_ray.get_collider().is_in_group("target"):
 				aim_ray.get_collider().hit()
+				#calls the function for the target that gets hit. 
 				hits = hits + 1
 				score += 10
-				print("bazinga!!!")
 			elif  aim_ray.get_collider().is_in_group("head"):
 				aim_ray.get_collider().headshot()
 				hits = hits + 1 

@@ -55,7 +55,7 @@ horizontal_alignment = 1
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.168783)
-target_position = Vector3(0, 0, -1000)
+target_position = Vector3(0, 0, -100)
 
 [node name="timer" type="Label" parent="head/Camera3D"]
 offset_right = 40.0
