@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdppehkw07u4a"]
+[gd_scene load_steps=7 format=3 uid="uid://cdppehkw07u4a"]
 
 [ext_resource type="Script" path="res://tracking_thing.gd" id="1_wwkur"]
 [ext_resource type="Texture2D" uid="uid://r1liahqjpsdp" path="res://pixil-frame-0 (1).png" id="2_1sbe5"]
 [ext_resource type="FontFile" uid="uid://2eihi8vbo5lk" path="res://JetBrainsMono-Medium.ttf" id="3_omp0y"]
+[ext_resource type="AudioStream" uid="uid://b1ocnva5ph51g" path="res://kexe_quake3_hitsound_tf2.mp3" id="4_wxttc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6ncj"]
 radius = 0.1
@@ -60,5 +61,8 @@ target_position = Vector3(0, 0, -100)
 [node name="timer" type="Label" parent="head/Camera3D"]
 offset_right = 40.0
 offset_bottom = 22.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="head/Camera3D"]
+stream = ExtResource("4_wxttc")
 
 [node name="Timer" type="Timer" parent="."]

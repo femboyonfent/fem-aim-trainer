@@ -37,8 +37,10 @@ func _physics_process(delta: float) -> void:
 func _shoot_USPS():
 	if aim_ray.is_colliding():
 		if aim_ray.get_collider().is_in_group("target"):
+			$head/Camera3D/AudioStreamPlayer.play()
 			hits = hits + 1
 			score += 10
 		elif  aim_ray.get_collider().is_in_group("head"):
 				hits = hits + 1 
 				score += 30
+				$head/Camera3D/AudioStreamPlayer.play()
