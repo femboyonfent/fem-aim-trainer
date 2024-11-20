@@ -30,12 +30,10 @@ mesh = SubResource("CylinderMesh_sugbh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0.085, -0.062, 0)
-visible = false
 mesh = SubResource("CylinderMesh_sugbh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D"]
 transform = Transform3D(0.866025, 0.5, -2.18557e-08, -0.5, 0.866025, 5.85622e-09, 2.18557e-08, 5.85622e-09, 1, -0.085, -0.063, 1.77636e-15)
-visible = false
 mesh = SubResource("CylinderMesh_sugbh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]

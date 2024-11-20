@@ -75,7 +75,6 @@ material = SubResource("StandardMaterial3D_xcwm6")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.052, 6.02709)
-visible = false
 size = Vector3(25, 1, 2.17538)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]

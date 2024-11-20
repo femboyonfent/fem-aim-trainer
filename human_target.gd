@@ -1,6 +1,6 @@
 extends CharacterBody3D
 var health = 4 
-var SPEED = [6,7,5,8,9]
+var SPEED = [6,7,8,9]
 @onready var speedpick = SPEED.pick_random()
 var direction: Vector2
 var speed: int
